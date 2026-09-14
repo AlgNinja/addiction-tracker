@@ -55,7 +55,10 @@ router.get('/', async (req, res) => {
     res.json(result.rows);
   } catch (error) {
     console.error('Error fetching habits for user:', error);
-    res.status(500).json({ error: 'Failed to retrieve habits from the database.' });
+    res.status(500).json({ 
+      error: 'Failed to retrieve habits from the database.',
+      message: error.message 
+    });
   }
 });
 
