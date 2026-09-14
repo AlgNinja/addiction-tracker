@@ -1,0 +1,27 @@
+{
+  "name": "addiction-tracker-backend",
+  "version": "1.0.0",
+  "description": "Express and Node.js REST API for Addiction Tracker with PostgreSQL",
+  "main": "src/server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js"
+  },
+  "keywords": [
+    "express",
+    "nodejs",
+    "postgresql",
+    "addiction-tracker",
+    "streak-counter"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@clerk/express": "^2.1.67",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "pg": "^8.13.3"
+  }
+}

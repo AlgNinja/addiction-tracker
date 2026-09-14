@@ -1,0 +1,65 @@
+/* ==============================================================================
+   GLOBAL CSS RESET & DESIGN TOKENS (frontend/src/index.css)
+   ============================================================================== */
+
+:root {
+  /* Color Palette: Calming slate, deep blue, emerald green, and warning amber */
+  --bg-dark: #0f172a;        /* Deep slate background */
+  --bg-surface: #1e293b;     /* Card and sidebar background */
+  --bg-surface-elevated: #334155; /* Hover and elevated elements */
+  --bg-input: #0b1120;       /* Form input background */
+  
+  --text-main: #f8fafc;      /* Crisp white text */
+  --text-muted: #94a3b8;     /* Soft slate text for hints/secondary */
+  --text-faint: #64748b;     /* Subdued borders and subtle details */
+
+  --primary: #3b82f6;        /* Vibrant blue for primary buttons */
+  --primary-hover: #2563eb;
+  
+  --accent-green: #10b981;   /* Emerald green for active streaks & success */
+  --accent-amber: #f59e0b;   /* Amber for flames & streak milestones */
+  --accent-red: #ef4444;     /* Red/rose for relapse alerts */
+  --accent-purple: #8b5cf6;
+
+  --border-subtle: #334155;
+  --border-highlight: #475569;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -4px rgba(0, 0, 0, 0.3);
+
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: dark;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input, textarea, select {
+  font-family: inherit;
+}

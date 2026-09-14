@@ -1,0 +1,52 @@
+# ==============================================================================
+# DOCKER COMPOSE CONFIGURATION
+# ==============================================================================
+# This file defines and runs multi-container Docker applications.
+# Here, we use it to run a PostgreSQL database in a container.
+#
+# WHY USE DOCKER FOR THE DATABASE?
+# - You do not need to install PostgreSQL directly onto your computer's OS.
+# - The database runs in an isolated, reproducible container.
+# - Anyone downloading this project can start the exact same database with:
+#     docker compose up -d
+# ==============================================================================
+
+services:
+  postgres:
+    # We use the official PostgreSQL image from Docker Hub (version 16)
+    image: postgres:16-alpine
+    container_name: addiction_tracker_db
+    restart: unless-stopped
+
+    # Environment variables configure PostgreSQL inside the container:
+    environment:
+      POSTGRES_USER: tracker_user
+      POSTGRES_PASSWORD: tracker_password
+      POSTGRES_DB: addiction_tracker
+      TZ: UTC
+
+    # Ports: "HOST:CONTAINER"
+    # Port 5432 on your host machine is mapped to 5432 inside the Docker container.
+    # This allows your Node.js backend (running on localhost) to connect to port 5432.
+    ports:
+      - "5432:5432"
+
+    # Volumes:
+    # 1. 'pgdata' ensures your data is NOT lost when you stop or restart the container.
+    # 2. './init-db' mounts a folder containing SQL scripts that Docker runs automatically
+    #    the very FIRST time the database container is created.
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./init-db:/docker-entrypoint-initdb.d
+
+    # Healthcheck:
+    # Allows Docker to verify whether the database is ready to accept connections.
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U tracker_user -d addiction_tracker"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+# Persistent named volume for PostgreSQL data
+volumes:
+  pgdata:
